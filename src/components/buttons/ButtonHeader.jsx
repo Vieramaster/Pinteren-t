@@ -1,8 +1,6 @@
-export default function ButtonHeader({ text, colors }) {
+export default function ButtonHeader({ text }) {
   return (
-    <button
-      className={`${colors} px-5 py-3  rounded-3xl flex items-center gap-2 font-semibold`}
-    >
+    <button className="hidden px-5 py-3  rounded-3xl  items-center gap-2 font-semibold bg-second-color  lg:flex hover:bg-fourth-color hover:text-first-color transform">
       {text}
     </button>
   );

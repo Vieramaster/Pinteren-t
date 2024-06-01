@@ -1,5 +1,5 @@
 import Header from "./components/Header";
-
+import FooterMobile from "./components/FooterMobile";
 export default function App() {
   return (
     <>
@@ -8,6 +8,7 @@ export default function App() {
 
 
       </div>
+      <FooterMobile/>
     </>
   );
 }
