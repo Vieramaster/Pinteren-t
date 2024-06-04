@@ -6,13 +6,13 @@ import ButtonFooter from "./buttons/ButtonFooter";
 export default function FooterMobile() {
   return (
     <footer className="bg-first-color w-screen h-24 flex fixed  bottom-0 md:hidden">
-      <ButtonFooter>
-        <IcoHome size={"2rem"} color={"third-color"} />
-      </ButtonFooter>
-      <ButtonFooter>
+      <ButtonFooter name={"Home"}>
+        <IcoHome size={"2rem"} color={"third-color"}  />
+      </ButtonFooter >
+      <ButtonFooter name={"Discover"}>
         <IcoDiscover size={"2rem"} color={"third-color"} />
       </ButtonFooter>
-      <ButtonFooter>
+      <ButtonFooter name={"User"}>
         <IcoUser size={"2rem"} color={"third-color"} />
       </ButtonFooter>
     </footer>

@@ -1,9 +1,7 @@
 export default function IcoLogo({size}) {
   return (
     <svg
-
       aria-label="Pinterest"
-      class="g_1 gUZ U9O kVc"
       role="img"
       viewBox="0 0 24 24"
       width={size}
