@@ -19,7 +19,7 @@ export default function Header({
   };
 
   return (
-    <header className=" w-full h-20 flex justify-between items-center gap-5 px-5 bg-first-color">
+    <header className="fixed z-50 w-full h-20 flex justify-between items-center gap-5 px-5 bg-first-color">
       <div className="  flex gap-1  items-center flex-1">
         <IcoLogo size={"2rem"} />
         <h2 className="font-semibold text-fifth-color text-xl mr-2 hidden sm:flex">

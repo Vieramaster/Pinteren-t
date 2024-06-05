@@ -17,27 +17,23 @@ export default function App() {
 
   let index = useRef(1);
 
+  useEffect(() => {
+    if (searchValue) {
+      setActiveComponent(3);
 
-
-useEffect(() => {
-  if (searchValue) {
-    setActiveComponent(3);
-
-    api.search
-      .getPhotos({ query: searchValue, perPage: 20, page: index.current })
-      .then((result) => {
-        setData(result ? result : null);
-      })
-      .catch(() => {
-        console.log("something went wrong!");
-      });
-  }
-}, [searchValue]);
-
+      api.search
+        .getPhotos({ query: searchValue, perPage: 20, page: index.current })
+        .then((result) => {
+          setData(result ? result : null);
+        })
+        .catch(() => {
+          console.log("something went wrong!");
+        });
+    }
+  }, [searchValue]);
 
   const moreData = () => {
     index.current++;
-
     api.search
       .getPhotos({ query: searchValue, perPage: 20, page: index.current })
       .then((result) => {
@@ -58,14 +54,12 @@ useEffect(() => {
       });
   };
 
-
-
   return (
     <>
       <Header {...{ setSearchValue, setActiveComponent, activeComponent }} />
-      {activeComponent === 1 && <HomeSection {...{activeComponent, api}} />}
-      {activeComponent === 2 && <Discover />}
-      {activeComponent === 3 && <SearchBox {...{data, moreData}} />}
+      {activeComponent === 1 && <HomeSection {...{setSearchValue}} />}
+      {activeComponent === 2 && <Discover {...{setSearchValue}}/>}
+      {activeComponent === 3 && <SearchBox {...{ data, moreData }} />}
       <FooterMobile />
     </>
   );

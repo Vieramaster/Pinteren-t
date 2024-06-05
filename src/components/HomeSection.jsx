@@ -1,26 +1,22 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
+import FetchTopic from "./CustomHooks/FetchTopic";
+import CardList from "./CardList";
 
-export default function HomeSection({ activeComponent, api }) {
+
+export default function HomeSection({ setSearchValue }) {
   const [dataHome, setDataHome] = useState({});
 
-  useEffect(() => {
-    if (activeComponent === 3) {
-      const fetchPhotos = async () => {
-        let photos = [];
-        for (let i = 0; i < 6; i++) {
-          const response = await fetch(`https://api.unsplash.com/photos/random/?client_id=${api}`);
-          const result = await response.json();
-          photos.push(result);
-        }
-        setDataHome(photos);
-      };
+  FetchTopic(setDataHome, "responsive", "latest");
 
-      fetchPhotos().catch((error) => console.error('Error:', error));
-    }
-  }, [activeComponent, api]);
-
-  console.log(dataHome);
   return (
-    <section className=" w-full min-h-[calc(100vh-_5rem)] h-auto px-5 lg:px-10"></section>
+    <section className="  w-full min-h-[calc(100vh-_5rem)] h-auto  lg:p-10 flex flex-col items-center py-20 lg:py-24">
+      <h1 className="text-fourth-color font-semibold w-full text-center h-10 text-xl lg:text-3xl">
+        Welcome to <span className="text-fifth-color flex-1  ">Pinteren't</span>
+      </h1>
+      <h3 className="text-fourth-color font-semibold w-full text-center h-10 text-lg lg:text-2xl">
+        Latest Topics
+      </h3>
+      <CardList setSearchValue={setSearchValue} data={dataHome}  />
+    </section>
   );
 }
