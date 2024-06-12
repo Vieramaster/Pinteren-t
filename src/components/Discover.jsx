@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { createApi } from "unsplash-js";
 import { Masonry } from "@mui/lab";
 
-
 export default function Discover({ setSearchValue }) {
   const [dataDiscover, setDataDiscover] = useState([]);
 
@@ -26,7 +25,7 @@ export default function Discover({ setSearchValue }) {
 
   return (
     <section className="  w-full min-h-screen h-auto  py-20  lg:p-10 flex flex-col items-center lg:py-24 ">
-      <h1 className="text-fourth-color font-semibold  text-center place-content-center h-28 text-xl  lg:text-4xl ">
+      <h1 className="text-fourth-color font-semibold my-5 text-center place-content-center h-10 text-2xl  lg:text-4xl ">
         Latest<span className="text-fifth-color flex-1"> Topics</span>
       </h1>
 

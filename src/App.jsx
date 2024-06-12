@@ -9,7 +9,7 @@ import { createApi } from "unsplash-js";
 export default function App() {
   const [searchValue, setSearchValue] = useState("");
   const [dataSearch, setDataSearch] = useState([]);
-  const [activeComponent, setActiveComponent] = useState(2);
+  const [activeComponent, setActiveComponent] = useState(1);
 
   const api = createApi({
     accessKey: import.meta.env.VITE_ACCESKEYEXTRA,
@@ -43,7 +43,6 @@ export default function App() {
         console.log("something went wrong!");
       });
   };
-  console.log(dataSearch);
 
   return (
     <>
@@ -51,7 +50,7 @@ export default function App() {
       {activeComponent === 1 && <Home {...{ setSearchValue }} />}
       {activeComponent === 2 && <Discover {...{ setSearchValue }} />}
       {activeComponent === 3 && <SearchBox {...{ dataSearch, moreData }} />}
-      <FooterMobile />
+      <FooterMobile {...{ setActiveComponent }} />
     </>
   );
 }
