@@ -6,8 +6,8 @@ export default {
   theme: {
     extend: {
       spacing: {
-        'ponga': '-10rem',
-        // puedes continuar añadiendo más aquí...
+       '-10': '-10rem',
+        '-20': '-20rem',
       },
       colors: {
         "first-color": "#ffffff",
