@@ -63,7 +63,7 @@ export default function App() {
           setSearchValue,
           setActiveComponent,
           activeComponent,
-          toggleLogin
+          toggleLogin,
         }}
       />
       {activeComponent === 1 && <Home {...{ setSearchValue }} />}

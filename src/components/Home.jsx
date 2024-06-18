@@ -108,19 +108,19 @@ export default function HomeSection() {
 
   const mainTitle = [
     {
-      title: "proyecto para decoración",
+      title: "Decoration proyect",
       color: "text-green-800",
     },
     {
-      title: "comida especial",
+      title: "Special food",
       color: "text-red-800",
     },
     {
-      title: "actividad para niños",
+      title: "Activity for childrens",
       color: "text-blue-800",
     },
     {
-      title: "idea para tu outfit",
+      title: "idea for your outfit",
       color: "text-amber-800",
     },
   ];
@@ -153,7 +153,7 @@ export default function HomeSection() {
     <section className="w-full h-screen pt-20 pb-24 md:pb-0 relative overflow-hidden">
       <div className="w-full h-1/5 pt-10">
         <h2 className="text-center font-semibold text-3xl pt-10 lg:text-5xl">
-          Descubre tu próxima
+          Discover your next
         </h2>
         {
           <h2

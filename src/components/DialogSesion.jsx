@@ -4,8 +4,11 @@ import IcoXmark from "./Icons/IcoXmark";
 export default function DialogSesion({ refLogin, toggleLogin }) {
   return (
     <dialog ref={refLogin} className=" w-96 rounded-2xl py-5 relative fadeIn">
-      <button className="absolute  w-10 h-10 right-3 top-3 rounded-full grid place-content-center hover:bg-second-color " onClick={toggleLogin}>
-        <IcoXmark className={"w-6 fill-third-color"}/>
+      <button
+        className="absolute  w-10 h-10 right-3 top-3 rounded-full grid place-content-center hover:bg-second-color "
+        onClick={toggleLogin}
+      >
+        <IcoXmark className={"w-6 fill-third-color"} />
       </button>
       <div className="flex flex-col w-full gap-6 items-center justify-center px-5 py-5 ">
         <IcoLogo size={"2rem"} />
@@ -65,13 +68,19 @@ export default function DialogSesion({ refLogin, toggleLogin }) {
               </span>
               and acknowledge that you have read our{" "}
               <span>
-                <a href="https://policy.pinterest.com/es/privacy-policy" className="font-bold text-fourth-color">
+                <a
+                  href="https://policy.pinterest.com/es/privacy-policy"
+                  className="font-bold text-fourth-color"
+                >
                   {" "}
                   Privacy Policy
                 </a>
               </span>{" "}
               <span>
-                <a href="https://policy.pinterest.com/notice-at-collection" className="font-bold text-fourth-color">
+                <a
+                  href="https://policy.pinterest.com/notice-at-collection"
+                  className="font-bold text-fourth-color"
+                >
                   Information Collection Notice.
                 </a>
               </span>

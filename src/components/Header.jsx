@@ -2,7 +2,6 @@ import { useState } from "react";
 import IcoLogo from "./Icons/IcoLogo";
 import IcoSearch from "./Icons/IcoSearch";
 
-import ButtonExplore from "./buttons/ButtonExplore";
 import ButtonHeader from "./buttons/ButtonHeader";
 
 export default function Header({
@@ -26,15 +25,16 @@ export default function Header({
         <h2 className="font-semibold text-fifth-color text-xl mr-2 hidden sm:flex">
           Pinteren't
         </h2>
-        <ButtonExplore className={"hidden md:flex lg:hidden"} />
       </div>
       <ButtonHeader
+        className={"lg:flex"}
         text="Home"
         number={1}
         result={activeComponent}
         onClick={() => setActiveComponent(1)}
       />
       <ButtonHeader
+        className={"md:flex"}
         text="Discover"
         number={2}
         result={activeComponent}
