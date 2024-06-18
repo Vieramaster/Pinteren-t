@@ -10,7 +10,7 @@ Goal: To create an efficient and visually appealing application for searching an
 ![App Screenshot](https://i.ibb.co/QmMpj7s/Pinteren-t.webp)
 
 
-## Acknowledgements
+## Tech Stack
 
 ![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
 
