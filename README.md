@@ -1,8 +1,46 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+# Pinteren’t
 
-Currently, two official plugins are available:
+Introduction to Pinteren’t, an image search application inspired by Pinterest.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Goal: To create an efficient and visually appealing application for searching and displaying images.
+
+## Screenshots
+
+![App Screenshot](https://i.ibb.co/QmMpj7s/Pinteren-t.webp)
+
+
+## Acknowledgements
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB) 
+
+![MUI](https://img.shields.io/badge/MUI-%230081CB.svg?style=for-the-badge&logo=mui&logoColor=white)
+
+![Vercel](https://img.shields.io/badge/vercel-%23000000.svg?style=for-the-badge&logo=vercel&logoColor=white)
+
+![Adobe Photoshop](https://img.shields.io/badge/adobe%20photoshop-%2331A8FF.svg?style=for-the-badge&logo=adobe%20photoshop&logoColor=white)
+
+
+ 
+
+
+## Key Features:
+
+Image Search: 
+Implementation of an API that allows users to search for images based on keywords.
+Results Display: Design of an interface that presents images in an orderly and aesthetic manner.
+
+Animations and Transitions: Use of CSS and React techniques to animate images and manage transitions between components.
+## Challenges and Learnings:
+
+Integration of the API into React.
+
+Advanced customization with Tailwind CSS.
+
+Creation of smooth animations and seamless transitions.
