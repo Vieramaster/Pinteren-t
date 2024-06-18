@@ -1,9 +1,7 @@
 
 # Pinteren’t
 
-Introduction to Pinteren’t, an image search application inspired by Pinterest.
-
-Goal: To create an efficient and visually appealing application for searching and displaying images.
+This project, is inspired by the well-known Pinterest platform. It focuses on the practical application of image APIs such as Unsplash and advanced image handling using Masonry from MUI. The main goal of the project is to refine API call techniques and enhance my skills in Tailwind and React.
 
 ## Screenshots
 
