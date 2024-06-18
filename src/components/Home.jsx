@@ -96,15 +96,15 @@ export default function HomeSection() {
     ],
   };
 
-  const classLi = {
-    0: " flex-1 gap-4 h-full hidden flex-col justify-end 2xl:flex ",
-    1: "flex-1 gap-4 h-full hidden flex-col justify-end md:flex  2xl:mt-36 ",
-    2: "flex-1 gap-4 h-full flex flex-col justify-end mt-10  2xl:mt-16",
-    3: "flex-1 gap-4 h-full flex flex-col justify-end mt-20  2xl:mt-36",
-    4: "flex-1 gap-4 h-full flex flex-col justify-end mt-10  2xl:mt-16",
-    5: "flex-1 gap-4 h-full hidden flex-col justify-end md:flex  2xl:mt-36",
-    6: "flex-1 gap-4 h-full hidden flex-col justify-end 2xl:flex ",
-  };
+  const classLi = [
+    "flex-1 gap-4 h-full hidden flex-col justify-end 2xl:flex ",
+    "flex-1 gap-4 h-full hidden flex-col justify-end md:flex  2xl:mt-36 ",
+    "flex-1 gap-4 h-full flex flex-col justify-end mt-10  2xl:mt-16",
+    "flex-1 gap-4 h-full flex flex-col justify-end mt-20  2xl:mt-36",
+    "flex-1 gap-4 h-full flex flex-col justify-end mt-10  2xl:mt-16",
+    "flex-1 gap-4 h-full hidden flex-col justify-end md:flex  2xl:mt-36",
+    "flex-1 gap-4 h-full hidden flex-col justify-end 2xl:flex ",
+  ];
 
   const mainTitle = [
     {
@@ -151,8 +151,10 @@ export default function HomeSection() {
   console.log(animation);
   return (
     <section className="w-full h-screen pt-20 pb-24 md:pb-0 relative overflow-hidden">
-      <div className="w-full h-1/5">
-        <h2 className="text-center font-semibold text-3xl pt-10 lg:text-5xl">Descubre tu próxima</h2>
+      <div className="w-full h-1/5 pt-10">
+        <h2 className="text-center font-semibold text-3xl pt-10 lg:text-5xl">
+          Descubre tu próxima
+        </h2>
         {
           <h2
             className={`${mainTitle[category].color} ${

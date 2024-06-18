@@ -9,6 +9,7 @@ export default function Header({
   setSearchValue,
   setActiveComponent,
   activeComponent,
+  toggleLogin,
 }) {
   const [search, setSearch] = useState("");
 
@@ -55,7 +56,10 @@ export default function Header({
         </span>
       </fieldset>
 
-      <button className="px-5 py-3  rounded-3xl  items-center gap-2 font-semibold bg-fifth-color text-first-color hidden md:flex">
+      <button
+        className="px-5 py-3  rounded-3xl  items-center gap-2 font-semibold bg-fifth-color text-first-color hidden md:flex "
+        onClick={toggleLogin}
+      >
         Login
       </button>
     </header>

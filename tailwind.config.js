@@ -5,10 +5,7 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
-      spacing: {
-       '-10': '-10rem',
-        '-20': '-20rem',
-      },
+
       colors: {
         "first-color": "#ffffff",
         "second-color": "#e9e9e9",

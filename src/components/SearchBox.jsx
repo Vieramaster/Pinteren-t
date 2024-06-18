@@ -18,7 +18,7 @@ export default function SearchBox({ dataSearch, moreData }) {
             ? dataSearch.map((item) => (
                 <article
                   key={item.id}
-                  className="w-auto h-auto flex flex-col gap-2 "
+                  className="w-auto h-auto flex flex-col gap-2 fadeIn"
                 >
                   <div className="w-auto h-auto ">
                     <img

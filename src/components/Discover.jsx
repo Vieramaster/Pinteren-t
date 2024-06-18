@@ -36,7 +36,7 @@ export default function Discover({ setSearchValue }) {
                 <button
                   onClick={() => setSearchValue(item.slug)}
                   key={index}
-                  className="relative rounded-xl overflow-auto w-auto h-auto flex flex-col gap-2"
+                  className="relative rounded-xl overflow-auto w-auto h-auto flex flex-col gap-2 fadeIn"
                 >
                   <span className="absolute inset-0 bg-black bg-opacity-50"></span>
                   <img

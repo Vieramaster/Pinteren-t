@@ -1,6 +1,7 @@
 import { useEffect, useState, useRef } from "react";
 import Header from "./components/Header";
 import FooterMobile from "./components/FooterMobile";
+import DialogSesion from "./components/DialogSesion";
 import Home from "./components/Home";
 import Discover from "./components/Discover";
 import SearchBox from "./components/SearchBox";
@@ -44,13 +45,32 @@ export default function App() {
       });
   };
 
+  const refLogin = useRef(null);
+
+  const toggleLogin = () => {
+    if (!refLogin.current) {
+      return;
+    }
+    refLogin.current.hasAttribute("open")
+      ? refLogin.current.close()
+      : refLogin.current.showModal();
+  };
+
   return (
     <>
-      <Header {...{ setSearchValue, setActiveComponent, activeComponent }} />
+      <Header
+        {...{
+          setSearchValue,
+          setActiveComponent,
+          activeComponent,
+          toggleLogin
+        }}
+      />
       {activeComponent === 1 && <Home {...{ setSearchValue }} />}
       {activeComponent === 2 && <Discover {...{ setSearchValue }} />}
       {activeComponent === 3 && <SearchBox {...{ dataSearch, moreData }} />}
-      <FooterMobile {...{ setActiveComponent }} />
+      <FooterMobile {...{ setActiveComponent, toggleLogin }} />
+      <DialogSesion {...{ refLogin, toggleLogin }} />
     </>
   );
 }
