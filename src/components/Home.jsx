@@ -179,7 +179,7 @@ export default function HomeSection() {
           </li>
         ))}
       </ul>
-      <span className="bottom-20 h-32 w-full bg-gradient-to-t from-first-color to-transparent absolute md:bottom-0 "></span>
+      <span className="bottom-20 h-20 w-full bg-gradient-to-t from-first-color to-transparent absolute md:bottom-0 lg:h-32"></span>
     </section>
   );
 }
