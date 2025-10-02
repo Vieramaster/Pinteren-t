@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+#root {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+}
+
+@theme {
+  --color-brand: #004643;
+  --color-surface: #fafafa;
+  --color-soft: #e9e9e9;
+  --color-detail: #767676;
+  --color-ink: #000000;
+}
+
+.card {
+  animation-name: home_animation;
+  animation-duration: var(--cycle);
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-delay: calc(
+    var(--delay) * -1
+  ); /* escalonado estable en todos los ciclos */
+}
+@keyframes home_animation {
+  0% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  10% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+  20% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  80% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  90% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-10%);
+  }
+}
+
