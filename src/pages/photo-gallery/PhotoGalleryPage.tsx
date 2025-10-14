@@ -1,17 +1,37 @@
+import { useFetchPexels } from "../../shared/hooks/useFetchPexels";
 import { useParams } from "react-router";
-import { pexelsApiCall } from "../../shared/hooks/useFetchPexels";
+
 const PhotoGalleryPage = () => {
-  const params = useParams();
+  const {photos} = useParams();
+  
+   const { data, error, isLoading } = useFetchPexels(photos as string);
 
-  const key = params["photos"];
-  if (!params || !key) return;
-
-  const result = pexelsApiCall(key);
   return (
     <main className="w-full bg-surface h-screen pt-20 flex flex-col">
-      <ul>{}</ul>
+      {isLoading ? (
+        <p>Cargando...</p>
+      ) : error ? (
+        <p>Cargando...</p>
+      ) : !data || data.pages.length === 0 ? (
+        <p>No hay items</p>
+      ) : (
+             <ul className="columns-3  gap-4 ">
+        {data.pages.flat().map((photo) => (
+         <li key={photo.id}>
+           <img
+            src={photo.url}
+            alt={photo.photographer}
+            className="w-full h-auto object-cover rounded"
+          />
+         </li>
+        ))}
+      </ul>
+      )}
     </main>
   );
+  /**
+   *
+   */
 };
 
 export default PhotoGalleryPage;

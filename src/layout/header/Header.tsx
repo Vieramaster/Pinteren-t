@@ -10,7 +10,9 @@ export const Header = () => {
     const URL = readSearchQuery(event);
     if (!URL) return;
     navigate(`/images/${URL}`);
+ 
   };
+
 
   return (
     <header className="bg-surface fixed w-full z-20 h-20 flex justify-between items-center gap-5 px-10 ">

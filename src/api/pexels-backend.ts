@@ -1,69 +1,34 @@
-// /api/pexels-search.ts
-import type { VercelRequest, VercelResponse } from "@vercel/node";
-import axios, { isAxiosError } from "axios";
+import express from 'express'
+import { createClient } from 'pexels'
+import "dotenv/config"
 
-const KEY = process.env["PEXELS_API_KEY"];
-const pexels = axios.create({
-  baseURL: "https://api.pexels.com",
-  timeout: 8000,
-  headers: { Authorization: `Bearer ${KEY ?? ""}`, Accept: "application/json" },
-});
+const app = express()
+const port = 3000
+const client = createClient(process.env['PEXELS_API_KEY'] ||"")
 
-export default async function handler(req: VercelRequest, res: VercelResponse) {
-  // 1) Solo GET
-  if (req.method !== "GET") {
-    res.setHeader("Allow", "GET");
-    return res.status(405).json({ error: "Method Not Allowed" });
-  }
-  // 2) Key obligatoria
-  if (!KEY) return res.status(500).json({ error: "PEXELS_API_KEY faltante" });
-
+app.get('/api/images/', async (req, res) => {
   try {
-    // 3) Sanear inputs
-    const q = String(req.query["q"] ?? "").trim();
-    if (!q) return res.status(400).json({ error: "Falta ?q" });
-    if (q.length > 200)
-      return res.status(400).json({ error: "q demasiado larga" });
+    const search = (req.query['search'] as string) || 'Nature'
+    const perPage = Number(req.query['per_page']) || 10
 
-    // 4) Parseo robusto + límites
-    const perRaw = Number(req.query["per_page"] ?? 12);
-    const pageRaw = Number(req.query["page"] ?? 1);
-    const per_page =
-      Number.isFinite(perRaw) && perRaw > 0 ? Math.min(perRaw, 80) : 12;
-    const page = Number.isFinite(pageRaw) && pageRaw > 0 ? pageRaw : 1;
+    const response = await client.photos.search({ query: search, per_page: perPage })
+    // response: PhotosWithTotalResults | ErrorResponse
 
-    const result = await pexels.get("/v1/search", {
-      params: { query: q, per_page, page },
-    });
-
-    // 5) Cache pública en edge/CDN
-    res.setHeader("Cache-Control", "s-maxage=60, stale-while-revalidate=120");
-
-    // 7) (opcional) Propagar rate limit si existe
-    const rlRemain = result.headers["x-ratelimit-remaining"];
-    if (rlRemain !== undefined)
-      res.setHeader("X-RateLimit-Remaining", String(rlRemain));
-
-    return res.status(200).json(result.data);
-  } catch (e: unknown) {
-    // 6) Manejo de errores
-    if (!isAxiosError(e)) {
-      const msg = e instanceof Error ? e.message : String(e);
-      return res.status(502).json({ error: msg });
+    if ('photos' in response) {
+        const photos = response.photos.map(p => ({
+          ...p,
+          url: p.src.medium
+      }));
+      return res.json(photos)
     }
-    if (e.response) {
-      const status = e.response.status;
-      const payload = e.response.data ?? null;
-      if (status === 429)
-        return res
-          .status(429)
-          .json({ error: "Rate limit alcanzado", detail: payload });
-      return res
-        .status(status)
-        .json({ error: `HTTP ${status}`, detail: payload });
-    }
-    if (e.code === "ECONNABORTED")
-      return res.status(504).json({ error: "Timeout a Pexels" });
-    return res.status(502).json({ error: e.message || "Upstream error" });
+
+    // si llega ErrorResponse
+    return res.status(500).json({ error: 'Pexels error', details: response })
+    
+  } catch (err) {
+    console.error(err)
+    return res.status(500).json({ error: 'Falla en el servidor' })
   }
-}
+  
+})
+app.listen(port, () => console.log(`Server running on http://localhost:${port}`))
