@@ -1,52 +1,21 @@
-Para un JSDoc breve y profesional en un componente típico de React, con 5–6 puntos alcanzás:
+Para un JSDoc breve y profesional
 
 ````js
 /**
-*Nombre + qué hace — 1 línea.
-*
-*Resumen técnico — 1–2 líneas de comportamiento clave.
-*
-*@param — si tiene props.
-*
-*@returns — JSX.Element o tipo de retorno.
-*
-*@example — 1–2 líneas mostrando uso real.
-*
-*@see — referencias a componentes/tipos relevantes (opcional, solo si aplica).
+ * NombreComponente — breve descripción en 1 línea.
  *
- * ```
-
-EJEMPLO:
-
-```js
-/**
- * ItemList
+ * @description Resumen técnico del comportamiento clave (1–2 líneas).
  *
- * Componente que renderiza una lista de elementos simples en un <ul>.
+ * @param props — descripción de cada prop si aplica.
  *
- * @param {string[]} props.items - Array de strings a mostrar como elementos de la lista.
- * @returns {JSX.Element} - Elemento <ul> con cada item renderizado en un <li>.
+ * @remarks Información adicional sobre expectativas, efectos secundarios o restricciones.
  *
  * @example
- * ```tsx
- * <ItemList items={['Manzana', 'Banana', 'Naranja']} />
- * ```
+ * <NombreComponente prop1="valor" /> — ejemplo corto de uso.
  *
- * @see OrderedList
- * @see ListItem
+ * @returns JSX.Element o tipo devuelto.
+ *
+ * @see Referencias a hooks, componentes o tipos relevantes (opcional).
  */
 
-export const ItemList = ({ items }: { items: string[] }): JSX.Element => {
-  return (
-    <ul>
-      {items.map((item, index) => (
-        <li key={index}>{item}</li>
-      ))}
-    </ul>
-  );
-};
-
-
-```
-
-````
+ 

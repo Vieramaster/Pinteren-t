@@ -5,6 +5,23 @@ import { HomeGrid } from "./components/HomeGrid";
 import { HOME_IMAGES } from "../home/data/HOME_IMAGES";
 import { HomeTitle } from "./components/HomeTitle";
 
+/**
+ * HomePage
+ *
+ * @description Página principal de introducción de la app, mostrando dos carruseles coordinados:
+ * uno para el título y otro para una cuadrícula de imágenes.
+ *
+ * Características:
+ * - `CYCLE_MS` controla el tiempo total de cambio de animación de los dos carruseles.
+ * - `STAGGER_MS` controla el retraso entre la animación de cada card individual.
+ * - `carouselIndex` usa `useCycle` para rotar automáticamente la cuadrícula de imágenes cada 10s mediante *    un `setInterval`.
+ * - Coordina las animaciones de `HomeTitle` y `HomeGrid` según el índice actual del carrusel.
+ *
+ * @remarks Ambos carruseles se mantienen sincronizados automáticamente a medida que el índice cambia.
+ *
+ * @returns El elemento principal de la página.
+ */
+
 const HomePage = () => {
   const CYCLE_MS = 10000; // 10s
   const STAGGER_MS = 100; // 0.1s

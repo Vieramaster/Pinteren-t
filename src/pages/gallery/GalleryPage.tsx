@@ -8,11 +8,11 @@ import { GalleryStatus } from "./components/GalleryStatus";
 //ILUSTRATIONS
 import { EmptySearchIllustration } from "../../shared/illustrations/EmptySearchIllustration";
 import { ErrorIllustration } from "../../shared/illustrations/ErrorIllustration";
-import type { JSX } from "react";
+
 /**
  * GalleryPage
  *
- * Renders a photo gallery view driven by an optional route parameter.
+ * @description - Renders a photo gallery view driven by an optional route parameter.
  *
  * - Reads optional "photos" route param via useParams<{ photos?: string }>()
  *   and uses it as the search query (defaults to "").
@@ -30,7 +30,8 @@ import type { JSX } from "react";
  * @see GalleryStatus
  * @see GalleryMasonry
  */
-const GalleryPage = (): JSX.Element => {
+
+const GalleryPage = () => {
   const { photos } = useParams<{ photos?: string }>();
 
   if (!photos) throw new Error("lala");
