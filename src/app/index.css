@@ -12,10 +12,11 @@
 
 @theme {
   --color-brand: #004643;
-  --color-surface: #fafafa;
+  --color-surface: #FFFAFA;
   --color-soft: #e9e9e9;
-  --color-detail: #767676;
-  --color-ink: #000000;
+  --color-detail: #424141;
+  --color-ink: #f33210;
+  --color-sa: #000000
 }
 
 .card {

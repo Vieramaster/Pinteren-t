@@ -29,9 +29,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "/images/:photos",
-        lazy: awaitDefault(
-          () => import("../pages/photo-gallery/PhotoGalleryPage")
-        ),
+        lazy: awaitDefault(() => import("../pages/gallery/GalleryPage")),
       },
     ],
   },
