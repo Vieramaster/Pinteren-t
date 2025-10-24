@@ -1,3 +1,17 @@
+/**
+ * EmptySearchIllustration
+ *
+ * @description Renderiza una ilustración decorativa de "not found" como un SVG. Este componente está destinado a usarse cuando data.length === 0 .
+ *
+ * @param props - Props SVG estándar que se pasan al elemento raíz <svg> (por ejemplo, width, height, className, style, aria-*)
+ *
+ * @remarks El componente acepta todos los estandares SVG props (React.SVGProps<SVGSVGElement>) que estan en el elemento raiz <svg>, esto hace que su manejo sea mucho mas sencillo agregarles atributos como tamaño, estilos, accecibilidad y demas.
+ *
+ * @example
+ * <EmptySearchIllustration classname="size-2.5" arial-label="emply" />
+ *
+ * @returns JSX.Element que contiene una ilustracion de "Not found"
+ */
 export const EmptySearchIllustration = (
   props: React.SVGProps<SVGSVGElement>
 ) => (

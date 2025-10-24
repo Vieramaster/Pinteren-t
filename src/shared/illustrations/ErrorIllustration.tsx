@@ -1,3 +1,18 @@
+/**
+ * ErrorIllustration
+ *
+ * @description Renderiza una ilustración decorativa de "ERROR" como un SVG. Este componente está destinado a usarse en páginas de error.
+ *
+ * @param props - Props SVG estándar que se pasan al elemento raíz <svg> (por ejemplo, width, height, className, style, aria-*)
+ *
+ * @remarks El componente acepta todos los estandares SVG props (React.SVGProps<SVGSVGElement>) que estan en el elemento raiz <svg>, esto hace que su manejo sea mucho mas sencillo agregarles atributos como tamaño, estilos, accecibilidad y demas.
+ *
+ * @example
+ * <ErrorIllustration classname="size-2.5" arial-label="error" />
+ *
+ * @returns JSX.Element que contiene una ilustracion de Error 404 /not found
+ */
+
 export const ErrorIllustration = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     xmlns="http://www.w3.org/2000/svg"

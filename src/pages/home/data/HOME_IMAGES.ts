@@ -3,8 +3,9 @@ import type { HomeImages } from "../types/home";
 /**
  * HOME_IMAGES
  *
- * Colección de imágenes usadas en HomePage.
+ * @description Colección de imágenes usadas en HomePage.
  *
+ * @remarks
  * Estructura: [bloque1, bloque2, bloque3, bloque4] -> HomeImages
  * - Cada bloque (ImageColumn) contiene exactamente 7 pares (ImagePair).
  * - Cada par (ImagePair) es un array con 2 rutas de imagen: [rutaPrimaria, rutaSecundaria].
@@ -14,7 +15,7 @@ import type { HomeImages } from "../types/home";
  * - Cada ImagePair debe contener exactamente 2 rutas válidas (strings).
  * - Las rutas son relativas a `/public`.
  *
- * Ejemplo:
+ * @example
  * const firstPair: ImagePair = HOME_IMAGES[0][0];
  * const srcPrimary = HOME_IMAGES[1][3][0]; // bloque 2, fila 4, primera ruta
  *

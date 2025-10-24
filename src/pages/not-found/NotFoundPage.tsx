@@ -8,9 +8,9 @@ import { NotFoundIllustration } from "./Illustrations/NotFoundIllustration";
  * @description Página que se muestra cuando la ruta no existe (404). Muestra
  * una ilustración a la izquierda y el texto de error a la derecha usando "StatusPage".
  *
- * Componentes usados:
- * - @see StatusPage: componente presentacional que recibe una ilustración SVG y texto.
- * - @see NotFoundIllustration: componente SVG que implementa "React.SVGProps<SVGSVGElement>".
+ * Componentes:
+ * @see StatusPage: componente presentacional que recibe una ilustración SVG y texto.
+ * @see NotFoundIllustration: componente SVG que implementa "React.SVGProps<SVGSVGElement>".
  *
  * @remarks
  * - Usa "useRouteError()" para obtener el mensaje real del error si existe.

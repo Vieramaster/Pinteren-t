@@ -1,6 +1,19 @@
-type SearchIcoProps = React.SVGProps<SVGSVGElement>;
+/**
+ * SearchIco
+ *
+ * @description Renderiza la imagen de una lupa (search).
+ *
+ * @param props - Props SVG estándar que se pasan al elemento raíz <svg> (por ejemplo, width, height, className, style, aria-*)
+ *
+ * @remarks El componente acepta todos los estandares SVG props (React.SVGProps<SVGSVGElement>) que estan en el elemento raiz <svg>, esto hace que su manejo sea mucho mas sencillo agregarles atributos como tamaño, estilos, accecibilidad y demas.
+ *
+ * @example
+ * <SearchIco classname="size-2.5" arial-label="logo" />
+ *
+ * @returns JSX.Element que devuelve la imagen de lupa en formato SVG
+ */
 
-export const SearchIco = ({ ...props }: SearchIcoProps) => {
+export const SearchIco = ({ ...props }: React.SVGProps<SVGSVGElement>) => {
   return (
     <svg
       viewBox="0 0 24 24"

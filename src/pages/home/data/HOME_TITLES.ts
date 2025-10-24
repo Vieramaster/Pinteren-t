@@ -1,11 +1,12 @@
 /**
  * HOME_TITLES
  *
- * Lista inmutable de títulos usados en la home.
+ * @description Lista inmutable de títulos usados en la home.
  * Cada item tiene:
  * - title: texto mostrado.
  * - color: clase Tailwind para el color del título.
  *
+ * @remarks 
  * Recomendaciones:
  * - Mantener las clases Tailwind aquí (consistencia).
  * - Marcar `as const` para obtener tipos literales y readonly.
