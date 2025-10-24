@@ -1,8 +1,7 @@
 /**
- * GalleryStatus
+ * PageStatus
  *
- * Componente presentacional para mostrar un estado vacío en PhotoGalleryPage
- * cuando la API devuelve  error o cuando hay datos vacíos (data.length === 0).
+ * Componente presentacional para mostrar un estado vacío, errores en API, o 404 / not found
  *
  * @param variant : determina si el componente se usa para el estado vacio del fetch o su error.
  * @param Illustration - Componente SVG que se mostrará según el contexto.
@@ -19,24 +18,24 @@
  */
 import type { ComponentType } from "react";
 
-interface GalleryEmptyProps {
+interface StatusPageProps {
   variant: "empty" | "error";
   Illustration: ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
   message: string;
 }
-export const GalleryStatus = ({
+export const StatusPage = ({
   Illustration,
   title,
   message,
   variant,
-}: GalleryEmptyProps) => (
+}: StatusPageProps) => (
   <main
     className="w-full min-h-screen flex items-center justify-center px-6 md:px-10 py-20 bg-surface"
     role={variant === "error" ? "alert" : "region"}
     aria-live={variant === "error" ? "assertive" : "polite"}
     aria-label={
-      variant === "error" ? "Error loading gallery" : "No results found"
+      variant === "error" ? "Error loading page" : "No results found"
     }
   >
     <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-[75rem]">

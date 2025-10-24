@@ -11,13 +11,16 @@ import { HomeTitle } from "./components/HomeTitle";
  * @description Página principal de introducción de la app, mostrando dos carruseles coordinados:
  * uno para el título y otro para una cuadrícula de imágenes.
  *
- * Características:
- * - `CYCLE_MS` controla el tiempo total de cambio de animación de los dos carruseles.
- * - `STAGGER_MS` controla el retraso entre la animación de cada card individual.
- * - `carouselIndex` usa `useCycle` para rotar automáticamente la cuadrícula de imágenes cada 10s mediante *    un `setInterval`.
- * - Coordina las animaciones de `HomeTitle` y `HomeGrid` según el índice actual del carrusel.
+ * Componentes:
+ * @see HomeTitle -  Muestra el título animado.
+ * @see HomeGrid - Muestra la grilla de imágenes.
  *
- * @remarks Ambos carruseles se mantienen sincronizados automáticamente a medida que el índice cambia.
+ * @remarks
+ * - "CYCLE_MS" controla el tiempo total de cambio de animación de los dos carruseles.
+ * - "STAGGER_MS" controla el retraso entre la animación de cada card individual.
+ * - "carouselIndex" usa "useCycle" para rotar automáticamente la cuadrícula de imágenes cada 10s mediante un `setInterval`.
+ * - Coordina las animaciones de `HomeTitle` y `HomeGrid` según el índice actual del carrusel.
+ * - Ambos carruseles se mantienen sincronizados automáticamente a medida que el índice cambia.
  *
  * @returns El elemento principal de la página.
  */
@@ -29,7 +32,8 @@ const HomePage = () => {
 
   return (
     <main className="w-full bg-surface h-screen pt-20 relative overflow-hidden p-10">
-      <HomeTitle stateIndex={carouselIndex} cycleMs={CYCLE_MS} />
+      <HomeTitle currentCardBatch={carouselIndex} cycleMs={CYCLE_MS} />
+
       <HomeGrid
         images={HOME_IMAGES[carouselIndex] ?? []}
         currentCardBatch={carouselIndex}

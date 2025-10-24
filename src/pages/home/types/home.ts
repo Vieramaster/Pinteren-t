@@ -1,6 +1,8 @@
-//HOME_IMAGES TYPES
+/** Tipo: par de rutas de imagen (p. ej. variante A / variante B) */
 export type ImagePair = [string, string];
-export type SevenPairs = [
+
+/** Tipo: columna con 7 pares (una columna en la grid) */
+export type ImageColumn = [
   ImagePair,
   ImagePair,
   ImagePair,
@@ -10,4 +12,5 @@ export type SevenPairs = [
   ImagePair
 ];
 
-export type HomeImages = [SevenPairs, SevenPairs, SevenPairs, SevenPairs];
+/** Tipo: colección de 4 columnas (bloques que ciclan en el home) */
+export type HomeImages = [ImageColumn, ImageColumn, ImageColumn, ImageColumn];

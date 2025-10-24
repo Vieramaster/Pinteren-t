@@ -1,3 +1,22 @@
+/**
+ * DISCOVER_IMAGES
+ *
+ * @description Colección de objetos que representan imágenes disponibles en la sección Discover,
+ * cada una con su URL y título correspondiente.
+ *
+ * @remarks
+ * - Se usa en el componente Discover para renderizar una lista estándar de tarjetas.
+ * - Cada objeto debe tener las propiedades:
+ *     - imageUrl: string, ruta relativa a la imagen en /public.
+ *     - title: string, título descriptivo de la categoría.
+ * - No se espera que este array cambie en tiempo de ejecución.
+ *
+ * @example
+ * <DiscoverCardList images={DISCOVER_IMAGES} />
+ *
+ * @see DiscoverCardList in src/pages/discover/components
+ */
+
 type discoverImages = {
   imageUrl: string;
   title: string;

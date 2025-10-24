@@ -2,6 +2,36 @@
 import type { ImagePair } from "../types/home";
 import { HomeCardItem } from "./HomeCardItem";
 
+/**
+ * HomeGrid
+ *
+ * @description Grilla de imagenes para el componente HomePage, Se actualiza automáticamente cada vez que
+ * `currentCardBatch` cambia, sincronizado con el carrusel de imágenes.
+ *  -HomeCardItem: Card donde contiene 2 imagenes para la grilla.
+ *
+ * @param images - Array de 2 imagenes proveniente de `HOME_IMAGES` y el index actual del hook principal (ImagePair)
+ * @param cycleMs  - Tiempo total de ciclo de animación de la grilla (ms).
+ * @param staggerMs - Tiempo total de ciclo de animación del card con sus 2 imagenes (ms).
+ * @param currentCardBatch - Index actual que otorga el hook useCycle
+ *
+ * @remarks
+ * - la grilla es dinamica, cambia de bloque cada vez que current
+ * - CardClass es un array de strings, del cual el indice coincide con como tiene que estar posicionado  cada card en la grilla.
+ * - En el componente HomeCardItem la key se utiliza de esta manera `key={`${currentCardBatch}-${index}`}`  para que cuando la grilla quede desfasada por cambios en el responsive, en la siguiente grilla, se reibicie adecuadameante y no tenga desfaces de de  tiempo
+ *
+ *
+ * @example
+ * const [index,setIndex] = useState(0)
+ * <HomeGrid
+         images={image.webp}
+         currentCardBatch={index}
+         cycleMs={15000} // ms
+         staggerMs={200} // ms
+       />
+ *
+ * @returns JSX.Element o tipo devuelto con la grilla completa de imagenes en carrousel
+ */
+
 const cardClass = [
   "hidden 2xl:flex",
   "hidden md:flex 2xl:translate-y-35",
@@ -18,12 +48,12 @@ type HomeGridProps = {
   staggerMs: number;
   currentCardBatch: number;
 };
-export function HomeGrid({
+export const HomeGrid = ({
   images,
   cycleMs,
   staggerMs,
   currentCardBatch,
-}: HomeGridProps) {
+}: HomeGridProps) => {
   return (
     <>
       <span className="w-full bg-linear-to-b from-surface to-transparent absolute lg:h-32 z-20" />
@@ -41,4 +71,4 @@ export function HomeGrid({
       </ul>
     </>
   );
-}
+};

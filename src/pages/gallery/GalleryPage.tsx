@@ -4,7 +4,7 @@ import { useParams } from "react-router";
 //COMPONENTS
 import { GallerySkeleton } from "./components/GallerySkeleton";
 import { GalleryMasonry } from "./components/GalleryMasonry";
-import { GalleryStatus } from "./components/GalleryStatus";
+import { StatusPage } from "../../shared/components/StatusPage";
 //ILUSTRATIONS
 import { EmptySearchIllustration } from "../../shared/illustrations/EmptySearchIllustration";
 import { ErrorIllustration } from "../../shared/illustrations/ErrorIllustration";
@@ -12,23 +12,26 @@ import { ErrorIllustration } from "../../shared/illustrations/ErrorIllustration"
 /**
  * GalleryPage
  *
- * @description - Renders a photo gallery view driven by an optional route parameter.
+ * @description Renderiza una galería de imágenes según el parámetro de ruta dinámico "photos".
  *
- * - Reads optional "photos" route param via useParams<{ photos?: string }>()
- *   and uses it as the search query (defaults to "").
- * - Calls useFetchPexels(query) and consumes { data, error, isLoading }.
- * - Renders one of four states: loading, error, empty, success.
+ *  * Componentes:
+ * @see GallerySkeleton - Placeholder que se muestra mientras los datos se cargan.
+ * @see StatusPage - Componente para mostrar estado vacío o error.
+ * @see GalleryMasonry - Presenta los resultados en un layout estilo Masonry.
+ *
+ * Logica:
+ * @see useParams - Obtiene el parámetro de búsqueda desde la ruta.
+ * @see useFetchPexels - Hace la petición a la API de Pexels y retorna un resultado paginado.
+ *
+ * ilustraciones:
+ * @see EmptySearchIllustration - Ilustracion usada cuando no hay resultado de busqueda. (data.pages.length === 0 )
+ * @see ErrorIllustration - Ilustracion usada cuando la API devuelve un error.
  *
  * @remarks
- * - Expects paginated result shape: data.pages is an array of pages.
- * - Side effects (fetching, retries) are handled by the hook.
+ * - Se espera que "data.pages" sea un array paginado de imágenes.
+ * - Maneja tres estados principales: cargando, error, vacío.
  *
- * @returns The gallery page root element.
- *
- * @see useFetchPexels
- * @see GallerySkeleton
- * @see GalleryStatus
- * @see GalleryMasonry
+ * @returns JSX.Element representando la página principal de la galería.
  */
 
 const GalleryPage = () => {
@@ -44,14 +47,14 @@ const GalleryPage = () => {
       {isLoading ? (
         <GallerySkeleton />
       ) : error ? (
-        <GalleryStatus
+        <StatusPage
           variant="error"
           Illustration={ErrorIllustration}
           title="Something went wrong"
           message="We couldn’t load the gallery. Please try again."
         />
       ) : !data?.pages || data.pages.flat().length === 0 ? (
-        <GalleryStatus
+        <StatusPage
           variant="empty"
           Illustration={EmptySearchIllustration}
           title="No results found"

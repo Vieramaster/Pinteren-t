@@ -1,7 +1,7 @@
 import { createBrowserRouter } from "react-router";
 import type { ComponentType } from "react";
 import { RootLayout } from "../layout/RootLayout";
-import ErrorPage from "../pages/404/ErrorPage";
+import NotFoundPage from "../pages/not-found/NotFoundPage";
 
 export const awaitDefault =
   (importer: () => Promise<{ default: ComponentType }>) => async () => {
@@ -13,7 +13,7 @@ export const router = createBrowserRouter([
   {
     path: "/",
     Component: RootLayout,
-    ErrorBoundary: ErrorPage,
+    ErrorBoundary: NotFoundPage,
     children: [
       {
         index: true,
@@ -21,7 +21,7 @@ export const router = createBrowserRouter([
       },
       {
         path: "*",
-        lazy: awaitDefault(() => import("../pages/404/ErrorPage")),
+        lazy: awaitDefault(() => import("../pages/not-found/NotFoundPage")),
       },
       {
         path: "/Discover",

@@ -1,37 +1,19 @@
 /**
  * GallerySkeleton
  *
- * Lightweight, presentational skeleton used as a placeholder while gallery images load.
+ * @description Componente presentacional que renderiza un placeholder para una galería
+ * de imágenes en formato Masonry mientras los datos reales están siendo cargados.
  *
- * The component renders an unordered list (<ul>) that uses CSS columns to create a
- * masonry-like layout. It generates a fixed number of placeholder items (12) and
- * cycles through a predefined set of height utility classes to give a varied,
- * organic appearance to the skeleton items.
+ * @remarks
+ * - Renderiza 12 "cards" con alturas aleatorias tomadas del array `heights`.
+ * - Cada card tiene animación de pulsado (`animate-pulse`) para indicar carga.
+ * - No recibe props; su único objetivo es visual, como indicador de loading.
  *
- * Key behaviors and implementation notes:
- * - Renders 12 <li> elements as placeholders.
- * - Heights are defined in the internal `heights` array and reused via modulo indexing
- *   so placeholders appear with varied vertical sizes.
- * - Uses utility classes for layout and appearance:
- *   - Parent: columns-[25rem] for column layout, p-10 padding, gap-10 spacing.
- *   - Items: break-inside-avoid to prevent column breaks inside items, rounded-2xl,
- *     shadow-md, bg-soft and animate-pulse for a pulsing skeleton effect.
- * - Purely presentational: items contain no interactive content or semantic image markup.
+ * @example
+ * <GallerySkeleton />
  *
- * Accessibility:
- * - As a purely decorative/loading UI, consider marking the skeleton as hidden from
- *   assistive technologies (for example, aria-hidden="true" on the container) so it
- *   does not distract screen reader users. When actual content is available, replace
- *   the skeleton with real semantic markup.
- *
- * Usage:
- * - Use this component whenever a gallery or grid of images is being loaded to provide
- *   visual structure and reduce layout shift.
- *
- * @returns {JSX.Element} A list of animated placeholder items representing a loading gallery.
+ * @returns JSX.Element que muestra un skeleton de cards de carga.
  */
-
-
 export const GallerySkeleton = () => {
   const heights = [
     "h-[32rem]",
@@ -46,7 +28,7 @@ export const GallerySkeleton = () => {
       {Array.from({ length: 12 }).map((_, i) => (
         <li
           key={i}
-          className={`bg-soft animate-pulse break-inside-avoid mb-10 rounded-2xl  shadow-md  duration-200 ${
+          className={`bg-soft animate-pulse break-inside-avoid mb-10 rounded-2xl shadow-md duration-200 ${
             heights[i % heights.length]
           }`}
         ></li>
