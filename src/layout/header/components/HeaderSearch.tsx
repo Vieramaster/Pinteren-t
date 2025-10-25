@@ -1,4 +1,4 @@
-import { SearchIco } from "../../../shared/ui/icons/SearchIco";
+import { SearchIco } from "../../../assets/icons/SearchIco";
 
 type HeaderSearchProps = {
   placeholder?: string;

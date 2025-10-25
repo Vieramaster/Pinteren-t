@@ -4,6 +4,7 @@ import { useCycle } from "./hooks/useCycle";
 import { HomeGrid } from "./components/HomeGrid";
 import { HOME_IMAGES } from "../home/data/HOME_IMAGES";
 import { HomeTitle } from "./components/HomeTitle";
+import { MainLayout } from "../../layout/base/MainLayout";
 
 /**
  * HomePage
@@ -14,6 +15,7 @@ import { HomeTitle } from "./components/HomeTitle";
  * Componentes:
  * @see HomeTitle -  Muestra el título animado.
  * @see HomeGrid - Muestra la grilla de imágenes.
+ * @see MainLayout - contenedor <main> con los estilos definidos.
  *
  * @remarks
  * - "CYCLE_MS" controla el tiempo total de cambio de animación de los dos carruseles.
@@ -31,16 +33,15 @@ const HomePage = () => {
   const carouselIndex = useCycle(HOME_IMAGES.length, CYCLE_MS);
 
   return (
-    <main className="w-full bg-surface h-screen pt-20 relative overflow-hidden p-10">
+    <MainLayout className=" h-screen  relative overflow-hidden ">
       <HomeTitle currentCardBatch={carouselIndex} cycleMs={CYCLE_MS} />
-
       <HomeGrid
         images={HOME_IMAGES[carouselIndex] ?? []}
         currentCardBatch={carouselIndex}
         cycleMs={CYCLE_MS}
         staggerMs={STAGGER_MS}
       />
-    </main>
+    </MainLayout>
   );
 };
 export default HomePage;

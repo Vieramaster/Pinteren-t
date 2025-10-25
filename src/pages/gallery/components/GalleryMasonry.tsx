@@ -32,7 +32,7 @@ export const GalleryMasonry = ({ cardData }: MasonryGalleryProps) => (
   <ul className="columns-[25rem] p-10 gap-10" role="list">
     {cardData.pages
       .flat()
-      .map(({ id, url, photographer, photographer_url, alt }) => (
+      .map(({ id, src, photographer, photographer_url, alt }) => (
         <li
           key={id}
           className="mb-10 rounded-2xl overflow-hidden"
@@ -40,9 +40,10 @@ export const GalleryMasonry = ({ cardData }: MasonryGalleryProps) => (
         >
           {/** imagen */}
           <img
-            src={url}
+            src={src.medium}
             alt={alt || photographer || "Image"}
             className="w-full h-auto object-cover"
+            loading="lazy"
           />
           {/** CARD */}
           <article className="w-full p-4 bg-soft">

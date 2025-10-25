@@ -1,6 +1,6 @@
 import { useRouteError } from "react-router";
 import { StatusPage } from "../../shared/components/StatusPage";
-import { NotFoundIllustration } from "./Illustrations/NotFoundIllustration";
+import { NotFoundIllustration } from "../../assets/illustrations/NotFoundIllustration";
 
 /**
  * NotFoundPage

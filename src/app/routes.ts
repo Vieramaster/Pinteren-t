@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router";
 import type { ComponentType } from "react";
-import { RootLayout } from "../layout/RootLayout";
+import { RootLayout } from "../layout/base/RootLayout";
 import NotFoundPage from "../pages/not-found/NotFoundPage";
 
 export const awaitDefault =

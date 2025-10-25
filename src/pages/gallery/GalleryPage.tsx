@@ -5,9 +5,9 @@ import { useParams } from "react-router";
 import { GallerySkeleton } from "./components/GallerySkeleton";
 import { GalleryMasonry } from "./components/GalleryMasonry";
 import { StatusPage } from "../../shared/components/StatusPage";
-//ILUSTRATIONS
-import { EmptySearchIllustration } from "../../shared/illustrations/EmptySearchIllustration";
-import { ErrorIllustration } from "../../shared/illustrations/ErrorIllustration";
+import { MainLayout } from "../../layout/base/MainLayout";
+//STATUS
+import { STATUS_PAGES } from "./data/STATUS_PAGE";
 
 /**
  * GalleryPage
@@ -18,14 +18,12 @@ import { ErrorIllustration } from "../../shared/illustrations/ErrorIllustration"
  * @see GallerySkeleton - Placeholder que se muestra mientras los datos se cargan.
  * @see StatusPage - Componente para mostrar estado vacío o error.
  * @see GalleryMasonry - Presenta los resultados en un layout estilo Masonry.
+ * @see MainLayout - contenedor <main> con los estilos definidos
  *
  * Logica:
  * @see useParams - Obtiene el parámetro de búsqueda desde la ruta.
  * @see useFetchPexels - Hace la petición a la API de Pexels y retorna un resultado paginado.
  *
- * ilustraciones:
- * @see EmptySearchIllustration - Ilustracion usada cuando no hay resultado de busqueda. (data.pages.length === 0 )
- * @see ErrorIllustration - Ilustracion usada cuando la API devuelve un error.
  *
  * @remarks
  * - Se espera que "data.pages" sea un array paginado de imágenes.
@@ -37,33 +35,27 @@ import { ErrorIllustration } from "../../shared/illustrations/ErrorIllustration"
 const GalleryPage = () => {
   const { photos } = useParams<{ photos?: string }>();
 
-  if (!photos) throw new Error("lala");
+  const { data: photosData, error, isLoading } = useFetchPexels(photos || "");
 
-  const { data, error, isLoading } = useFetchPexels(photos);
-  console.log(data);
+  // Early return si no hay photos en la URL
+  if (!photos) return <StatusPage {...STATUS_PAGES.noPhotos} />;
 
+  // Loading
+  if (isLoading) return <GallerySkeleton />;
+
+  // Error al cargar
+  if (error) return <StatusPage {...STATUS_PAGES.fetchError} />;
+
+  // No hay resultados
+  if (!photosData?.pages?.flat().length)
+    return <StatusPage {...STATUS_PAGES.empty} />;
+
+  // Render principal
   return (
-    <main className="w-full bg-surface h-screen pt-20 flex flex-col">
-      {isLoading ? (
-        <GallerySkeleton />
-      ) : error ? (
-        <StatusPage
-          variant="error"
-          Illustration={ErrorIllustration}
-          title="Something went wrong"
-          message="We couldn’t load the gallery. Please try again."
-        />
-      ) : !data?.pages || data.pages.flat().length === 0 ? (
-        <StatusPage
-          variant="empty"
-          Illustration={EmptySearchIllustration}
-          title="No results found"
-          message="Try adjusting your filters or using different keywords. A small change in your search can make all the difference."
-        />
-      ) : (
-        <GalleryMasonry cardData={data} />
-      )}
-    </main>
+    <MainLayout>
+      <GalleryMasonry cardData={photosData} />
+    </MainLayout>
   );
 };
+
 export default GalleryPage;

@@ -1,5 +1,5 @@
 import { Link, useNavigate } from "react-router";
-import { LogoIco } from "../../shared/ui/icons/LogoIco";
+import { LogoIco } from "../../assets/icons/LogoIco";
 import { HeaderSearch } from "./components/HeaderSearch";
 import { AnchorButton } from "../../shared/ui/buttons/AnchorButton";
 import { readSearchQuery } from "./lib/readSearchQuery";
@@ -10,9 +10,7 @@ export const Header = () => {
     const URL = readSearchQuery(event);
     if (!URL) return;
     navigate(`/images/${URL}`);
- 
   };
-
 
   return (
     <header className="bg-surface fixed w-full z-20 h-20 flex justify-between items-center gap-5 px-10 ">
