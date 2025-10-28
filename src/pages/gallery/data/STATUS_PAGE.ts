@@ -9,7 +9,6 @@ import { EmptySearchIllustration } from "../../../assets/illustrations/EmptySear
  * (variant, Illustration, title, message) de manera centralizada y reutilizable.
  *
  * Keys disponibles:
- * - `noPhotos`: se usa cuando no se recibe un parámetro válido de galería
  * - `fetchError`: se usa cuando ocurre un error al cargar los datos
  * - `empty`: se usa cuando la búsqueda no devuelve resultados
  *
@@ -33,12 +32,6 @@ import { EmptySearchIllustration } from "../../../assets/illustrations/EmptySear
  */
 
 export const STATUS_PAGES = {
-  noPhotos: {
-    variant: "error",
-    Illustration: ErrorIllustration,
-    title: "Invalid URL",
-    message: "No gallery specified.",
-  },
   fetchError: {
     variant: "error",
     Illustration: ErrorIllustration,

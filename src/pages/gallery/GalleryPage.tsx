@@ -37,18 +37,18 @@ const GalleryPage = () => {
 
   const { data: photosData, error, isLoading } = useFetchPexels(photos || "");
 
-  // Early return si no hay photos en la URL
-  if (!photos) return <StatusPage {...STATUS_PAGES.noPhotos} />;
+  const noData = !photosData?.pages?.flat().length;
 
-  // Loading
+
+  //Cargando...
   if (isLoading) return <GallerySkeleton />;
 
   // Error al cargar
-  if (error) return <StatusPage {...STATUS_PAGES.fetchError} />;
+  if (error)
+    return <StatusPage {...STATUS_PAGES.fetchError} message={error?.message} />;
 
   // No hay resultados
-  if (!photosData?.pages?.flat().length)
-    return <StatusPage {...STATUS_PAGES.empty} />;
+  if (noData) return <StatusPage {...STATUS_PAGES.empty} />;
 
   // Render principal
   return (

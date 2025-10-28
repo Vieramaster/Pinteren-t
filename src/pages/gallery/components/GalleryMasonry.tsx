@@ -51,15 +51,15 @@ export const GalleryMasonry = ({ cardData }: MasonryGalleryProps) => (
               Autor:
               <a
                 className="ml-1 underline underline-offset-2"
-                href={photographer_url}
+                href={photographer_url ?? ""}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {photographer}
+                {photographer ?? "unknown"}
               </a>
             </h3>
 
-            <p className="italic">{alt}</p>
+            <p className="italic">{alt ?? "alt not found"}</p>
           </article>
         </li>
       ))}
