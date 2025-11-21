@@ -37,7 +37,7 @@ const fetchImages = async (
   const photoQuantity = 15;
 
   const res = await fetch(
-    `http://fantaspic.vercel.app/api/photos?query=${queryKey}&per_page=${photoQuantity}&page=${pageParam}`
+    `https://fantaspic.vercel.app/api/photos?query=${queryKey}&per_page=${photoQuantity}&page=${pageParam}`
   );
   if (!res.ok) throw new Error("Error getting photos from Pexels API");
 
