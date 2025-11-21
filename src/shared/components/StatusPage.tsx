@@ -41,9 +41,9 @@ export const StatusPage = ({
   >
     <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-[75rem]">
       {/* Ilustracion SVG*/}
-      <Illustration className="w-full md:w-1/2 h-auto" aria-hidden="true" />
+      <Illustration className="w-full md:w-1/2 h-auto px-4" aria-hidden="true" />
       {/*  datos */}
-      <article className="flex flex-col justify-center text-center md:text-left w-full md:w-1/2">
+      <article className="flex flex-col justify-center items-center text-center  w-full md:w-1/2 ">
         <h2
           className="text-brand font-bold mb-5"
           style={{ fontSize: "clamp(2rem, 5vw, 3.5rem)" }}
