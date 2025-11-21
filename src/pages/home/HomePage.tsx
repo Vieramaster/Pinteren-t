@@ -1,6 +1,6 @@
 //HOOK
 import { useCycle } from "./hooks/useCycle";
-//UI
+//COMPONENTS
 import { HomeGrid } from "./components/HomeGrid";
 import { HOME_IMAGES } from "../home/data/HOME_IMAGES";
 import { HomeTitle } from "./components/HomeTitle";
@@ -17,6 +17,9 @@ import { MainLayout } from "../../layout/base/MainLayout";
  * @see HomeGrid - Muestra la grilla de imágenes.
  * @see MainLayout - contenedor <main> con los estilos definidos.
  *
+ * Hook:
+ * @see useCycle - Hook personalizado que gestiona el índice actual del carrusel basado en un intervalo de tiempo.
+ * 
  * @remarks
  * - "CYCLE_MS" controla el tiempo total de cambio de animación de los dos carruseles.
  * - "STAGGER_MS" controla el retraso entre la animación de cada card individual.

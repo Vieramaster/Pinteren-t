@@ -1,13 +1,17 @@
-//HOOKS
+// HOOKS
 import { useFetchPexels } from "../../shared/hooks/useFetchPexels";
+import { useRef } from "react";
 import { useParams } from "react-router";
-//COMPONENTS
+import { useInfiniteScroll } from "./hooks/UseInfiniteScroll";
+
+// COMPONENTS
 import { GallerySkeleton } from "./components/GallerySkeleton";
 import { GalleryMasonry } from "./components/GalleryMasonry";
 import { StatusPage } from "../../shared/components/StatusPage";
 import { MainLayout } from "../../layout/base/MainLayout";
-//STATUS
-import { STATUS_PAGES } from "./data/STATUS_PAGE";
+
+// DATA
+import { STATUS_PAGES } from "../../data/STATUS_PAGE";
 
 /**
  * GalleryPage
@@ -31,31 +35,43 @@ import { STATUS_PAGES } from "./data/STATUS_PAGE";
  *
  * @returns JSX.Element representando la página principal de la galería.
  */
-
 const GalleryPage = () => {
-  const { photos } = useParams<{ photos?: string }>();
+  const { photos: URLPARAM } = useParams<{ photos?: string }>();
+  const sentinel = useRef<HTMLDivElement | null>(null);
 
-  const { data: photosData, error, isLoading } = useFetchPexels(photos || "");
+  const {
+    photos,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    error,
+    status,
+  } = useFetchPexels(URLPARAM);
 
-  const noData = !photosData?.pages?.flat().length;
+  const noData = status === "success" && photos?.length === 0;
 
+  // Infinite scroll
+  useInfiniteScroll({
+    sentinel,
+    hasNextPage,
+    isFetchingNextPage,
+    fetchNextPage,
+  });
 
-  //Cargando...
-  if (isLoading) return <GallerySkeleton />;
+  const renderContent = {
+    pending: <GallerySkeleton />,
+    error: <StatusPage {...STATUS_PAGES.fetchError} message={error?.message} />,
 
-  // Error al cargar
-  if (error)
-    return <StatusPage {...STATUS_PAGES.fetchError} message={error?.message} />;
+    success: noData ? (
+      <StatusPage {...STATUS_PAGES.empty} />
+    ) : (
+      <MainLayout>
+        <GalleryMasonry cardData={photos} sentinel={sentinel} />
+      </MainLayout>
+    ),
+  };
 
-  // No hay resultados
-  if (noData) return <StatusPage {...STATUS_PAGES.empty} />;
-
-  // Render principal
-  return (
-    <MainLayout>
-      <GalleryMasonry cardData={photosData} />
-    </MainLayout>
-  );
+  //Render principal
+  return renderContent[status];
 };
-
 export default GalleryPage;

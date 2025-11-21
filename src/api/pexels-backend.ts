@@ -1,56 +1,48 @@
-import express from "express";
+import cors from "cors";
+import dotenv from "dotenv";
+import express, { type Request, type Response } from "express";
 import { createClient } from "pexels";
 import "dotenv/config";
 
 /**
- * Respuesta devuelta por la llamada `photos.search` del cliente de Pexels.
  *
- * Contiene metadatos de búsqueda y un arreglo de objetos de fotos devueltos por la API de Pexels.
+ * pexels-backend.ts
+ *
+ * @description Servidor Express que actúa como proxy para la API de Pexels.
+ * Esto es necesario para ocultar la clave de API y evitar problemas de CORS
+ * al hacer solicitudes desde el frontend.
  *
  * @remarks
- * - `response.photos` es un arreglo de objetos de foto (generalmente con id, width, height, url, photographer, src, etc.).
- * - `response.total_results` es el número total de fotos que coinciden con la búsqueda.
- * - `response.page` es el número de página actual.
- * - `response.per_page` es la cantidad de resultados solicitados por página (corresponde al parámetro `perPage`).
- * - `response.next_page` y `response.prev_page` pueden estar presentes para la paginación.
+ * - Escucha en el puerto 4000.
+ * - Proporciona un endpoint /api/photos que acepta parámetros de consulta
+ *  para buscar fotos en Pexels.
+ * - Utiliza la librería "pexels" para interactuar con la API de Pexels.
+ * - Maneja errores y responde con un estado 500 en caso de fallos.
  *
- * @example
- * // Desestructurar los campos útiles
- * // const { photos, total_results, page, per_page } = response;
- *
- * @throws {Error} Si la solicitud HTTP falla o la API devuelve un error (por ejemplo, clave API inválida o límite de solicitudes).
- *
+ * API:
  * @see https://www.pexels.com/api/documentation/
+ *
+ * @returns Servidor Express corriendo en http://localhost:4000
  */
+
+dotenv.config();
 const app = express();
-const port = 3000;
-const client = createClient(process.env["PEXELS_API_KEY"] || "");
+app.use(cors());
 
-app.get("/api/images/", async (req, res) => {
+const client = createClient(process.env.PEXELS_API_KEY as string);
+
+app.get("/api/photos", async (req: Request, res: Response) => {
   try {
-    const search = (req.query["search"] as string) || "Nature";
-    const perPage = Number(req.query["per_page"]) || 15;
+    const query = (req.query.query as string) || "nature";
+    const page = parseInt(req.query.page as string) || 1;
+    const per_page = parseInt(req.query.per_page as string) || 10;
 
-    const response = await client.photos.search({
-      query: search,
-      per_page: perPage,
-    });
-    // response: PhotosWithTotalResults | ErrorResponse
-
-    if ("photos" in response) {
-      const photos = response.photos.map((p) => ({
-        ...p,
-      }));
-      return res.json(photos);
-    }
-
-    // si llega ErrorResponse
-    return res.status(500).json({ error: "Pexels error", details: response });
+    const result = await client.photos.search({ query, page, per_page });
+    res.json(result);
   } catch (err) {
     console.error(err);
-    return res.status(500).json({ error: "server failure" });
+    res.status(500).json({ error: "Error al buscar imágenes" });
   }
 });
-app.listen(port, () =>
-  console.log(`Server running on http://localhost:${port}`)
-);
+
+app.listen(4000, () => console.log("Servidor en http://localhost:4000"));

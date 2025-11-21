@@ -14,14 +14,17 @@ import { HomeCardItem } from "./HomeCardItem";
  * @param staggerMs - Tiempo total de ciclo de animación del card con sus 2 imagenes (ms).
  * @param currentCardBatch - Index actual que otorga el hook useCycle
  *
- * componente
+ * 
  * @remarks
  * - la grilla es dinamica, cambia de bloque cada vez que current
  * - CardClass es un array de strings, del cual el indice coincide con como tiene que estar posicionado  cada card en la grilla.
  * - En el componente HomeCardItem la key se utiliza de esta manera `key={`${currentCardBatch}-${index}`}`  para que cuando la grilla quede desfasada por cambios en el responsive, en la siguiente grilla, se reibicie adecuadameante y no tenga desfaces de de  tiempo
  *
- *@see HomeCardItem - card generica para la grilla de imagenes
- 
+ * Componentes:
+ * @see HomeCardItem - card generica para la grilla de imagenes
+ * Types: 
+ * @see ImagePair - Tipo que define un par de URLs de imágenes.
+ * 
  * @example
  * const [index,setIndex] = useState(0)
  * <HomeGrid
@@ -44,12 +47,13 @@ const cardClass = [
   "hidden 2xl:flex",
 ] as const;
 
-type HomeGridProps = {
+interface HomeGridProps {
   images: ImagePair[];
   cycleMs: number;
   staggerMs: number;
   currentCardBatch: number;
-};
+}
+
 export const HomeGrid = ({
   images,
   cycleMs,

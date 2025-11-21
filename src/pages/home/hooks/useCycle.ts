@@ -14,7 +14,7 @@ import { useEffect, useState } from "react";
  * @example
  *  const variable = useCycle(array.length, 5000) // cambia la grilla cada 5 seg
  *
- * @returns {number} retorne el index actual
+ * @returns number - Índice actual del ciclo, entre 0 y lengthCard - 1.
  */
 
 export const useCycle = (lengthCard: number, totalTime: number) => {

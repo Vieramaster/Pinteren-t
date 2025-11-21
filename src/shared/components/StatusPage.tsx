@@ -1,3 +1,5 @@
+//TYPES
+import type { ComponentType } from "react";
 /**
  * PageStatus
  *
@@ -15,14 +17,15 @@
  *   title="No results found!"
  *   message="Try adjusting your filters or using different keywords."
  * />
+ * 
+ * @returns JSX.Element que representa la página de estado.
  */
-import type { ComponentType } from "react";
 
 interface StatusPageProps {
   variant: "empty" | "error";
   Illustration: ComponentType<React.SVGProps<SVGSVGElement>>;
   title: string;
-  message: string;
+  message: string | undefined;
 }
 export const StatusPage = ({
   Illustration,
@@ -31,17 +34,15 @@ export const StatusPage = ({
   variant,
 }: StatusPageProps) => (
   <main
-    className="w-full min-h-screen flex items-center justify-center px-6 md:px-10 py-20 bg-surface"
+    className="w-full min-h-screen flex items-center justify-center pt-20 bg-surface"
     role={variant === "error" ? "alert" : "region"}
     aria-live={variant === "error" ? "assertive" : "polite"}
-    aria-label={
-      variant === "error" ? "Error loading page" : "No results found"
-    }
+    aria-label={variant === "error" ? "Error loading page" : "No results found"}
   >
     <div className="flex flex-col md:flex-row items-center justify-center gap-10 w-full max-w-[75rem]">
       {/* Ilustracion SVG*/}
       <Illustration className="w-full md:w-1/2 h-auto" aria-hidden="true" />
-
+      {/*  datos */}
       <article className="flex flex-col justify-center text-center md:text-left w-full md:w-1/2">
         <h2
           className="text-brand font-bold mb-5"
@@ -50,10 +51,10 @@ export const StatusPage = ({
           {title}
         </h2>
         <p
-          className="text-ink"
+          className="text-detail m-auto"
           style={{ fontSize: "clamp(1rem, 2.5vw, 1.75rem)" }}
         >
-          {message}
+          {message || "Please try again later."}
         </p>
       </article>
     </div>

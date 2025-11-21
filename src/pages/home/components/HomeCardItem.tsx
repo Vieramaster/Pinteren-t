@@ -26,6 +26,9 @@ import type { ImagePair } from "../types/home";
  *   staggerMs={200}
  *   className={cardClass ?? ""}
  * />
+ * 
+ * //TYPES:
+ * @see ImagePair - Tipo que define un par de URLs de imágenes.
  *
  * @returns JSX.Element que representa una card de la grilla.
  */

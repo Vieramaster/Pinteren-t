@@ -4,6 +4,28 @@ import { HeaderSearch } from "./components/HeaderSearch";
 import { AnchorButton } from "../../shared/ui/buttons/AnchorButton";
 import { readSearchQuery } from "./lib/readSearchQuery";
 
+/**
+ * Header
+ *
+ * @description Componente Header que incluye el logo, el formulario de búsqueda y un botón de navegación.
+ *
+ * @remarsks - Utiliza react-router para la navegación y manejo de formularios.
+ *
+ * Componentes:
+ * @see LogoIco - Icono del logo de la aplicación.
+ * @see HeaderSearch - Componente de búsqueda en el header.
+ * @see AnchorButton - Botón estilizado para navegación.
+ *
+ * Logica:
+ * @see readSearchQuery - Función para leer y procesar la consulta de búsqueda desde el formulario.
+ *
+ * Librerias:
+ * @see useNavigate - Hook de react-router para la navegación programática.
+ * @see Link - Componente de react-router para enlaces de navegación.
+ *
+ * @returns JSX.Element - El componente Header completo.
+ */
+
 export const Header = () => {
   const navigate = useNavigate();
   const handleFormSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {

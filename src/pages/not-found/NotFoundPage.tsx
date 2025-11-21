@@ -1,7 +1,6 @@
-import { useRouteError } from "react-router";
 import { StatusPage } from "../../shared/components/StatusPage";
-import { NotFoundIllustration } from "../../assets/illustrations/NotFoundIllustration";
 
+import { STATUS_PAGES } from "../../data/STATUS_PAGE";
 /**
  * NotFoundPage
  *
@@ -10,28 +9,14 @@ import { NotFoundIllustration } from "../../assets/illustrations/NotFoundIllustr
  *
  * Componentes:
  * @see StatusPage: componente presentacional que recibe una ilustración SVG y texto.
- * @see NotFoundIllustration: componente SVG que implementa "React.SVGProps<SVGSVGElement>".
+ * @see STATUS_PAGES: datos predefinidos para diferentes estados de página (error, vacío, carga).
  *
- * @remarks
- * - Usa "useRouteError()" para obtener el mensaje real del error si existe.
- * - "StatusPage" se renderiza con `variant="error"`; si querés diferenciar 404 de otros errores,
- *   podés usar `variant="empty"` o crear un "" específico.
+ * @remarks - Esta página se utiliza para manejar rutas no encontradas en la aplicación.
  *
  * @returns JSX.Element que representa la página 404 / error.
  */
 
 const NotFoundPage = () => {
-  const error = useRouteError() as { message?: string } | null;
-  const message =
-    error?.message ?? "An error occurred while loading this page.";
-
-  return (
-    <StatusPage
-      variant="error"
-      Illustration={NotFoundIllustration}
-      title="Error 404"
-      message={String(message)}
-    />
-  );
+  return <StatusPage {...STATUS_PAGES.errorPage} />;
 };
 export default NotFoundPage;

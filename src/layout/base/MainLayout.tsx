@@ -22,7 +22,7 @@ interface MainLayoutProps {
 
 export const MainLayout = ({ children, className = "" }: MainLayoutProps) => {
   return (
-    <main className={`w-full min-h-screen bg-surface pt-20  ${className}`}>
+    <main className={`w-full min-h-screen bg-surface pt-20  ${className}`} >
       {children}
     </main>
   );

@@ -27,6 +27,7 @@ Para un JSDoc breve y profesional
  *
  * @description Renderiza una galería de imágenes según el parámetro de ruta dinámico `photos`.
  *
+ * @param  nombledelparam - texto
  * Logica:
  * @see useParams - Obtiene el parámetro de búsqueda desde la ruta.
  * @see useFetchPexels - Hace la petición a la API de Pexels y retorna un resultado paginado.

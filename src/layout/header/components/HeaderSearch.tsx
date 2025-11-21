@@ -5,6 +5,20 @@ type HeaderSearchProps = {
   onSubmit: React.FormEventHandler<HTMLFormElement>;
 };
 
+/**
+ * HeaderSearch
+ *
+ * @description Componente de búsqueda en el Header de la aplicación.
+ *
+ * @param placeholder - Texto que se muestra cuando el campo de búsqueda está vacío. Valor por defecto: "I'm looking for ...".
+ *
+ * @see SearchIco Icono de búsqueda utilizado dentro del input.
+ *
+ * @remarks - Proporciona un formulario accesible con un input estilizado y un icono de búsqueda.
+ *
+ * @returns JSX.Element - Formulario de búsqueda con un input estilizado y un icono.
+ */
+
 export const HeaderSearch = ({
   placeholder = "I'm looking for ...",
   onSubmit,

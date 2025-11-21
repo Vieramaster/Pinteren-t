@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { DISCOVER_IMAGES } from "../data/DISCOVER_IMAGES";
+
 /**
  * DiscoverCard
  *
@@ -17,8 +17,8 @@ import { DISCOVER_IMAGES } from "../data/DISCOVER_IMAGES";
  * @returns JSX.Element de una card genérica para la presentación de los temas actuales.
  */
 interface DiscoverCardProps {
-  title: (typeof DISCOVER_IMAGES)[number]["title"];
-  imageUrl: (typeof DISCOVER_IMAGES)[number]["imageUrl"];
+  title: string;
+  imageUrl: string;
 }
 export const DiscoverCard = ({ title, imageUrl }: DiscoverCardProps) => (
   <li

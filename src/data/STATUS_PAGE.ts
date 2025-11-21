@@ -1,5 +1,6 @@
-import { ErrorIllustration } from "../../../assets/illustrations/ErrorIllustration";
-import { EmptySearchIllustration } from "../../../assets/illustrations/EmptySearchIllustration";
+import { ErrorIllustration } from "../assets/illustrations/ErrorIllustration";
+import { EmptySearchIllustration } from "../assets/illustrations/EmptySearchIllustration";
+import { NotFoundIllustration } from "../assets/illustrations/NotFoundIllustration";
 
 /**
  * STATUS_PAGES
@@ -11,12 +12,13 @@ import { EmptySearchIllustration } from "../../../assets/illustrations/EmptySear
  * Keys disponibles:
  * - `fetchError`: se usa cuando ocurre un error al cargar los datos
  * - `empty`: se usa cuando la búsqueda no devuelve resultados
+ * - `errorPage`: se usa para páginas de error genéricas como 404
  *
  * Cada key contiene:
- * @property { "error" | "empty" | string } variant - tipo de estado para aplicar estilos o lógica
- * @property { React.ComponentType } Illustration - componente de ilustración asociado al estado
- * @property { string } title - título descriptivo del estado
- * @property { string } message - mensaje adicional explicativo
+ * @property {variant }  - tipo de estado para aplicar estilos o lógica
+ * @property {Illustration}  - componente de ilustración asociado al estado
+ * @property { title }  - título descriptivo del estado
+ * @property { message }  - mensaje adicional explicativo
  *
  *
  * @example
@@ -44,5 +46,11 @@ export const STATUS_PAGES = {
     title: "No results found",
     message:
       "Try adjusting your filters or using different keywords. A small change in your search can make all the difference.",
+  },
+  errorPage: {
+    variant: "error",
+    Illustration: NotFoundIllustration,
+    title: "404 - Page Not Found",
+    message: "The page you are looking for does not exist.",
   },
 } as const;

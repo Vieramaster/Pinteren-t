@@ -1,3 +1,4 @@
+//DATA
 import { HOME_TITLES } from "../data/HOME_TITLES";
 
 /**
@@ -17,6 +18,9 @@ import { HOME_TITLES } from "../data/HOME_TITLES";
  *
  * @example
  * <HomeTitle currentCardBatch={index} cycleMs={5000} />
+ *
+ * //TYPES:
+ * @see HOME_TITLES - Array que define los títulos y colores para cada bloque.
  *
  * @returns JSX.Element con el título principal de la página y estilo animado.
  */
