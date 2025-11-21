@@ -51,11 +51,16 @@ export const useFetchPexels = (query = "nature") => {
     queryFn: ({ pageParam = 1 }) => fetchImages(query, pageParam as number),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
-      const url = lastPage.next_page;
-      if (!url) return undefined;
+      const nextPage = lastPage.next_page;
 
-      const nextPage = new URL(url).searchParams.get("page");
-      return nextPage ? Number(nextPage) : undefined;
+      if (!nextPage) return undefined;
+      
+      const absoluteUrl = nextPage.startsWith("http")
+        ? nextPage
+        : `http://localhost:4000${nextPage}`;
+
+      const pageStr = new URL(absoluteUrl).searchParams.get("page");
+      return pageStr ? Number(pageStr) : undefined;
     },
   });
   const flatPhotos = fetch.data?.pages.flatMap((page) => page.photos) ?? [];
