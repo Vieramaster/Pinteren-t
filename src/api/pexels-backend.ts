@@ -1,48 +1,38 @@
-import cors from "cors";
-import dotenv from "dotenv";
-import express, { type Request, type Response } from "express";
-import { createClient } from "pexels";
-import "dotenv/config";
+import type { VercelRequest, VercelResponse } from "@vercel/node";
+import { createClient, PhotosWithTotalResults, ErrorResponse } from "pexels";
 
-/**
- *
- * pexels-backend.ts
- *
- * @description Servidor Express que actúa como proxy para la API de Pexels.
- * Esto es necesario para ocultar la clave de API y evitar problemas de CORS
- * al hacer solicitudes desde el frontend.
- *
- * @remarks
- * - Escucha en el puerto 4000.
- * - Proporciona un endpoint /api/photos que acepta parámetros de consulta
- *  para buscar fotos en Pexels.
- * - Utiliza la librería "pexels" para interactuar con la API de Pexels.
- * - Maneja errores y responde con un estado 500 en caso de fallos.
- *
- * API:
- * @see https://www.pexels.com/api/documentation/
- *
- * @returns Servidor Express corriendo en http://localhost:4000
- */
-
-dotenv.config();
-const app = express();
-app.use(cors());
-
+// Cliente de Pexels usando API key de entorno
 const client = createClient(process.env.PEXELS_API_KEY as string);
 
-app.get("/api/photos", async (req: Request, res: Response) => {
+// Función para buscar fotos
+async function fetchPhotos(
+  query: string,
+  page: number,
+  perPage: number
+): Promise<PhotosWithTotalResults | ErrorResponse> {
+  return client.photos.search({ query, page, per_page: perPage });
+}
+
+export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
-    const query = (req.query.query as string) || "nature";
-    const page = parseInt(req.query.page as string) || 1;
-    const per_page = parseInt(req.query.per_page as string) || 10;
+    // Destructuring con defaults y parseo seguro
+    const { query = "nature", page = "1", per_page = "10" } = req.query;
 
-    const result = await client.photos.search({ query, page, per_page });
-    res.json(result);
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: "Error al buscar imágenes" });
+    const pageNum = Number(page);
+    const perPageNum = Number(per_page);
+
+    if (isNaN(pageNum) || isNaN(perPageNum)) {
+      return res
+        .status(400)
+        .json({ error: "Parámetros 'page' o 'per_page' inválidos" });
+    }
+
+    const result = await fetchPhotos(query as string, pageNum, perPageNum);
+
+    return res.status(200).json(result);
+  } catch (err: unknown) {
+    const errorMessage = err instanceof Error ? err.message : String(err);
+    console.error("Error fetching photos:", errorMessage);
+    return res.status(500).json({ error: "Error al buscar imágenes" });
   }
-});
-
-app.listen(4000, () => console.log("Servidor en http://localhost:4000"));
+}
