@@ -51,7 +51,7 @@ export const useFetchPexels = (query = "nature") => {
     queryFn: ({ pageParam = 1 }) => fetchImages(query, pageParam as number),
     initialPageParam: 1,
     getNextPageParam: (lastPage) => {
-      const nextPage = lastPage.next_page;
+      const nextPage = String(lastPage.next_page);
 
       if (!nextPage) return undefined;
       
