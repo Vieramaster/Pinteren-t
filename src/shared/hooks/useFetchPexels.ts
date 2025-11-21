@@ -57,7 +57,7 @@ export const useFetchPexels = (query = "nature") => {
       
       const absoluteUrl = nextPage.startsWith("http")
         ? nextPage
-        : `http://localhost:4000${nextPage}`;
+        : `https://fantaspic.vercel.app/api/pexels-backend?${nextPage}`;
 
       const pageStr = new URL(absoluteUrl).searchParams.get("page");
       return pageStr ? Number(pageStr) : undefined;
