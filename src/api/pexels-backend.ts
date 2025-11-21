@@ -14,6 +14,15 @@ async function fetchPhotos(
 }
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
+  // --- CORS headers ---
+  res.setHeader("Access-Control-Allow-Origin", "*"); // Cambiá * por tu frontend si querés más seguridad
+  res.setHeader("Access-Control-Allow-Methods", "GET,OPTIONS");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type");
+
+  // Manejar preflight OPTIONS
+  if (req.method === "OPTIONS") {
+    return res.status(200).end();
+  }
   try {
     // Destructuring con defaults y parseo seguro
     const { query = "nature", page = "1", per_page = "10" } = req.query;
