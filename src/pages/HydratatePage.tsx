@@ -1,4 +1,4 @@
-import { MainLayout } from "../../layout/base/MainLayout";
+import { MainLayout } from "../layout/base/MainLayout";
 /**
  * HydratatePage
  *

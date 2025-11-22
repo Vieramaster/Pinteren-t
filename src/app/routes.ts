@@ -1,29 +1,32 @@
+//HOOKS AND ROUTER
 import { createBrowserRouter } from "react-router";
+//TYPES
 import type { ComponentType } from "react";
+//LAYOUTS AND PAGES
 import { RootLayout } from "../layout/base/RootLayout";
-import NotFoundPage from "../pages/not-found/NotFoundPage";
-import HydratatePage from "../pages/Hydratate/HydratatePage";
+import NotFoundPage from "../pages/NotFoundPage";
+import HydratatePage from "../pages/HydratatePage";
 
 /**
  * Router
- * 
+ *
  * @description Configuración del router utilizando react-router v6 con carga diferida (lazy loading)
  * para las páginas principales de la aplicación.
- * 
+ *
  * @remarks
  * - La función `awaitDefault` se utiliza para cargar los componentes de las páginas de forma diferida.
  * - Se define una ruta raíz ("/") que utiliza `RootLayout` como componente contenedor.
  * - Se configuran rutas hijas para la página de inicio, página no encontrada (404), página de descubrimiento
  *   y página de galería de imágenes.
  * - Cada ruta hija utiliza la carga diferida para optimizar el rendimiento de la aplicación.
- * 
+ *
  * @see createBrowserRouter - Función de react-router para crear un router basado en el historial del navegador.
  * @see RootLayout - Componente de diseño principal que envuelve las páginas hijas.
- * @see NotFoundPage - Página que se muestra para rutas no encontradas (404). 
+ * @see NotFoundPage - Página que se muestra para rutas no encontradas (404).
  * @see HydratatePage - Página que maneja la hidratación de datos para React Query.
- * 
+ *
  * @returns Router configurado para la aplicación.
- * 
+ *
  */
 
 export const awaitDefault =
@@ -41,19 +44,19 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        lazy: awaitDefault(() => import("../pages/home/HomePage")),
+        lazy: awaitDefault(() => import("../pages/HomePage")),
       },
       {
         path: "*",
-        lazy: awaitDefault(() => import("../pages/not-found/NotFoundPage")),
+        lazy: awaitDefault(() => import("../pages/NotFoundPage")),
       },
       {
         path: "/Discover",
-        lazy: awaitDefault(() => import("../pages/discover/DiscoverPage")),
+        lazy: awaitDefault(() => import("../pages/DiscoverPage")),
       },
       {
         path: "/images/:photos",
-        lazy: awaitDefault(() => import("../pages/gallery/GalleryPage")),
+        lazy: awaitDefault(() => import("../pages/GalleryPage")),
       },
     ],
   },

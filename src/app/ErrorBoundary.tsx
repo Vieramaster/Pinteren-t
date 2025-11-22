@@ -1,5 +1,5 @@
 import { StatusPage } from "../shared/components/StatusPage";
-import { STATUS_PAGES } from "../data/STATUS_PAGE";
+import { STATUS_PAGES } from "../shared/constants/STATUS_PAGE";
 
 import React, { Component, ReactNode } from "react";
 

@@ -1,6 +1,6 @@
-import { ErrorIllustration } from "../assets/illustrations/ErrorIllustration";
-import { EmptySearchIllustration } from "../assets/illustrations/EmptySearchIllustration";
-import { NotFoundIllustration } from "../assets/illustrations/NotFoundIllustration";
+import { ErrorIllustration } from "../../assets/illustrations/ErrorIllustration";
+import { EmptySearchIllustration } from "../../assets/illustrations/EmptySearchIllustration";
+import { NotFoundIllustration } from "../../assets/illustrations/NotFoundIllustration";
 
 /**
  * STATUS_PAGES

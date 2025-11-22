@@ -1,6 +1,6 @@
 import { Outlet } from "react-router";
 import { Header } from "../header/Header";
-import ErrorBoundary from "../../components/ErrorBoundary";
+import ErrorBoundary from "../../app/ErrorBoundary";
 /**
  * RootLayout
  *

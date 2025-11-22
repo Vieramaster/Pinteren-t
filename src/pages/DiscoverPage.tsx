@@ -1,7 +1,7 @@
 //COMPONENTES
-import { DiscoverCardList } from "./components/DiscoverCardList";
+import { DiscoverCardList } from "../features/discover/components/DiscoverCardList"; 
 //DATOS
-import { DISCOVER_IMAGES } from "./data/DISCOVER_IMAGES";
+import { DISCOVER_IMAGES } from "../features/discover/data/DISCOVER_IMAGES";
 
 /**
  * DiscoverPage

@@ -1,17 +1,17 @@
 // HOOKS
-import { useFetchPexels } from "../../shared/hooks/useFetchPexels";
+import { useFetchPexels } from "../shared/hooks/useFetchPexels";
 import { useRef } from "react";
 import { useParams } from "react-router";
-import { useInfiniteScroll } from "./hooks/UseInfiniteScroll";
+import { useInfiniteScroll } from "../features/gallery/hooks/UseInfiniteScroll";
 
 // COMPONENTS
-import { GallerySkeleton } from "./components/GallerySkeleton";
-import { GalleryMasonry } from "./components/GalleryMasonry";
-import { StatusPage } from "../../shared/components/StatusPage";
-import { MainLayout } from "../../layout/base/MainLayout";
+import { GallerySkeleton } from "../features/gallery/components/GallerySkeleton";
+import { GalleryMasonry } from "../features/gallery/components/GalleryMasonry";
+import { StatusPage } from "../shared/components/StatusPage";
+import { MainLayout } from "../layout/base/MainLayout";
 
 // DATA
-import { STATUS_PAGES } from "../../data/STATUS_PAGE";
+import { STATUS_PAGES } from "../shared/constants/STATUS_PAGE";
 
 /**
  * GalleryPage

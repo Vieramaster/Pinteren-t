@@ -1,10 +1,10 @@
 //HOOK
-import { useCycle } from "./hooks/useCycle";
+import { useCycle } from "../features/home/hooks/useCycle";
 //COMPONENTS
-import { HomeGrid } from "./components/HomeGrid";
-import { HOME_IMAGES } from "../home/data/HOME_IMAGES";
-import { HomeTitle } from "./components/HomeTitle";
-import { MainLayout } from "../../layout/base/MainLayout";
+import { HomeGrid } from "../features/home/components/HomeGrid";
+import { HOME_IMAGES } from "../features/home/data/HOME_IMAGES";
+import { HomeTitle } from "../features/home/components/HomeTitle";
+import { MainLayout } from "../layout/base/MainLayout";
 
 /**
  * HomePage
@@ -19,7 +19,7 @@ import { MainLayout } from "../../layout/base/MainLayout";
  *
  * Hook:
  * @see useCycle - Hook personalizado que gestiona el índice actual del carrusel basado en un intervalo de tiempo.
- * 
+ *
  * @remarks
  * - "CYCLE_MS" controla el tiempo total de cambio de animación de los dos carruseles.
  * - "STAGGER_MS" controla el retraso entre la animación de cada card individual.

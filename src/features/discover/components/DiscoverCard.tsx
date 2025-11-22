@@ -25,7 +25,7 @@ export const DiscoverCard = ({ title, imageUrl }: DiscoverCardProps) => (
     key={title}
     className="rounded-2xl h-[400px] overflow-hidden group cursor-pointer duration-400"
   >
-    <Link to={"/" + title} className="relative">
+    <Link to={"/images/" + title} className="relative">
       <img
         src={imageUrl}
         alt={title}
