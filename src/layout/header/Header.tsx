@@ -3,6 +3,7 @@ import { LogoIco } from "../../assets/icons/LogoIco";
 import { HeaderSearch } from "./components/HeaderSearch";
 import { AnchorButton } from "../../shared/ui/buttons/AnchorButton";
 import { readSearchQuery } from "./lib/readSearchQuery";
+import { DiscoverIco } from "../../shared/ui/icons/DiscoverIco";
 
 /**
  * Header
@@ -45,7 +46,8 @@ export const Header = () => {
 
       <HeaderSearch onSubmit={handleFormSubmit} />
       <AnchorButton to="/discover">
-        <p>Discover</p>
+        <DiscoverIco className="size-[85%] fill-surface  transition-colors md:hidden" />
+        <p className="hidden md:flex text-lg">Discover</p>
       </AnchorButton>
     </header>
   );
